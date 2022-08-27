@@ -1,0 +1,42 @@
+buildscript {
+    repositories {
+        mavenCentral()
+    }
+    dependencies {
+        classpath ("org.springframework.boot:spring-boot-gradle-plugin:${spring_boot_version}")
+    }
+}
+
+plugins {
+    id 'org.springframework.boot' version "${spring_boot_version}"
+    id 'io.spring.dependency-management' version "${spring_dep_version}"
+    id 'java'
+    id 'idea'
+}
+
+group = 'io.gxstar'
+version = "${app_version}"
+sourceCompatibility = "${java_version}"
+
+configurations {
+    compileOnly {
+        extendsFrom annotationProcessor
+    }
+}
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    implementation "org.springframework.boot:spring-boot-starter-thymeleaf:${spring_boot_version}"
+    implementation "org.springframework.boot:spring-boot-starter-web:${spring_boot_version}"
+    compileOnly "org.projectlombok:lombok:${lombok_version}"
+    developmentOnly "org.springframework.boot:spring-boot-devtools:${spring_boot_version}"
+    annotationProcessor("org.projectlombok:lombok:${lombok_version}")
+    testImplementation "org.springframework.boot:spring-boot-starter-test:${spring_boot_version}"
+}
+
+tasks.named('test') {
+    useJUnitPlatform()
+}
