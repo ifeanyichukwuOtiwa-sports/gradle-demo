@@ -34,7 +34,7 @@ jobs:
           key: ${{ runner.os }}-gradle-${{ hashFiles('**/*.gradle') }}
           restore-keys: ${{ runner.os }}-gradle
       - name: Test
-        run: ./gradlew clean build jacocoTestReport sonarqube --parallel
+        run: ./gradlew clean build --parallel
       - name: Publish Test Report
         uses: mikepenz/action-junit-report@v2
         with:
