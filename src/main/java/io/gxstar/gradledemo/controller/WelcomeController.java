@@ -1,0 +1,24 @@
+package io.gxstar.gradledemo.controller;
+
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.GetMapping;
+
+import lombok.extern.slf4j.Slf4j;
+
+/**
+ * Created by @author Ifeanyichukwu Otiwa
+ * 27/08/2022
+ */
+
+@Slf4j
+@Controller
+public class WelcomeController {
+
+    @GetMapping("welcome")
+    public String welcome(Model model) {
+        log.info("Welcome method called");
+        model.addAttribute("message", "Hello Gradle");
+        return "welcome";
+    }
+}
